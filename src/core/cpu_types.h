@@ -1,6 +1,7 @@
 #pragma once
 #include "common/bitfield.h"
 #include "types.h"
+#include <optional>
 
 namespace CPU {
 
@@ -12,6 +13,14 @@ enum : PhysicalMemoryAddress
 enum : u32
 {
   INSTRUCTION_SIZE = sizeof(u32)
+};
+
+enum class Segment
+{
+  KUSEG, // virtual memory
+  KSEG0, // physical memory cached
+  KSEG1, // physical memory uncached
+  KSEG2
 };
 
 enum class Reg : u8
@@ -214,6 +223,8 @@ union Instruction
 bool IsBranchInstruction(const Instruction& instruction);
 bool IsUnconditionalBranchInstruction(const Instruction& instruction);
 u32 GetBranchInstructionTarget(const Instruction& instruction, u32 instruction_pc);
+bool IsCallInstruction(const Instruction& instruction);
+bool IsReturnInstruction(const Instruction& instruction);
 bool IsMemoryLoadInstruction(const Instruction& instruction);
 bool IsMemoryStoreInstruction(const Instruction& instruction);
 bool InstructionHasLoadDelay(const Instruction& instruction);
@@ -270,6 +281,9 @@ struct Registers
     };
   };
 };
+
+std::optional<VirtualMemoryAddress> GetLoadStoreEffectiveAddress(const Instruction& instruction,
+                                                                         const Registers* regs);
 
 enum class Cop0Reg : u8
 {
