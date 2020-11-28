@@ -1209,6 +1209,15 @@ void QtHostInterface::stopDumpingAudio()
   StopDumpingAudio();
 }
 
+void QtHostInterface::singleStepCPU()
+{
+  if (!isOnWorkerThread())
+  {
+    QMetaObject::invokeMethod(this, "singleStepCPU");
+    return;
+  }
+}
+
 void QtHostInterface::dumpRAM(const QString& filename)
 {
   if (!isOnWorkerThread())

@@ -1,0 +1,4 @@
+#pragma once
+#define SCM_RELEASE_ASSET "duckstation-windows-x64-release.zip"
+#define SCM_RELEASE_TAG "latest"
+#define SCM_RELEASE_TAG2 "964696b1f30d37de2f5437fe98464af71e8e2ad0"

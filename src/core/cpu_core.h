@@ -92,6 +92,7 @@ void ClearICache();
 
 /// Executes interpreter loop.
 void Execute();
+void SingleStep();
 
 ALWAYS_INLINE Registers& GetRegs() { return g_state.regs; }
 

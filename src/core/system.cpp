@@ -1145,6 +1145,10 @@ bool SaveState(ByteStream* state, u32 screenshot_size /* = 128 */)
   return true;
 }
 
+void SingleStepCPU()
+{
+
+
 void RunFrame()
 {
   s_frame_timer.Reset();

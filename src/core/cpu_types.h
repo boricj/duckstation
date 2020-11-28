@@ -14,6 +14,15 @@ enum : u32
   INSTRUCTION_SIZE = sizeof(u32)
 };
 
+enum class Segment
+{
+  KUSEG, // virtual memory
+  KSEG0, // physical memory cached
+  KSEG1, // physical memory uncached
+  KSEG2
+};
+
+
 enum class Reg : u8
 {
   zero,

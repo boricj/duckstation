@@ -163,6 +163,7 @@ public Q_SLOTS:
   void setAudioOutputMuted(bool muted);
   void startDumpingAudio();
   void stopDumpingAudio();
+  void singleStepCPU();
   void dumpRAM(const QString& filename);
   void saveScreenshot();
   void redrawDisplayWindow();
